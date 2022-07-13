@@ -10,5 +10,5 @@ updates:
     schedule:
       interval: "daily"
     ignore:
-      - dependency-name: "spigot"
-      - dependency-name: "bungee"
+      - dependency-name: "com.github.CyberedCake.CyberAPI:spigot"
+      - dependency-name: "com.github.CyberedCake.CyberAPI:bungee"
