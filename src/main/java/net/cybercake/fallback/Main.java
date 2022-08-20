@@ -31,6 +31,7 @@ public final class Main extends CyberAPI {
                 .prefix("Fallback")
                 .checkForUpdates(true)
                 .showPrefixInLogs(true)
+                .commandsPath("net.cybercake.fallback.commands")
                 .build()
         );
 
