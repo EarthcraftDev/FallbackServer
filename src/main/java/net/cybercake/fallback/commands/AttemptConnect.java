@@ -6,6 +6,7 @@ import net.cybercake.cyberapi.spigot.server.commands.CommandInformation;
 import net.cybercake.fallback.Main;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class AttemptConnect extends net.cybercake.cyberapi.spigot.server.command
     }
 
     @Override
-    public boolean perform(@net.cybercake.cyberapi.dependencies.annotations.jetbrains.NotNull CommandSender sender, @net.cybercake.cyberapi.dependencies.annotations.jetbrains.NotNull String command, CommandInformation information, String[] args) {
+    public boolean perform(@NotNull CommandSender sender, @NotNull String command, CommandInformation information, String[] args) {
         if(!(sender instanceof Player player)) {
             sender.sendMessage(UChat.component("&cOnly in-game players can use this command!")); return true;
         }
@@ -39,7 +40,7 @@ public class AttemptConnect extends net.cybercake.cyberapi.spigot.server.command
     }
 
     @Override
-    public List<String> tab(@net.cybercake.cyberapi.dependencies.annotations.jetbrains.NotNull CommandSender sender, @net.cybercake.cyberapi.dependencies.annotations.jetbrains.NotNull String command, CommandInformation information, String[] args) {
+    public List<String> tab(@NotNull CommandSender sender, @NotNull String command, CommandInformation information, String[] args) {
         if(args.length == 1) return List.of(Main.getInstance().getConfiguration().getConnectTo());
         return null;
     }

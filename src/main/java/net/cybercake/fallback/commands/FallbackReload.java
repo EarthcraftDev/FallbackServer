@@ -7,6 +7,7 @@ import net.cybercake.cyberapi.spigot.server.commands.CommandInformation;
 import net.cybercake.fallback.Main;
 import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class FallbackReload extends net.cybercake.cyberapi.spigot.server.command
     }
 
     @Override
-    public boolean perform(@net.cybercake.cyberapi.dependencies.annotations.jetbrains.NotNull CommandSender sender, @net.cybercake.cyberapi.dependencies.annotations.jetbrains.NotNull String command, CommandInformation information, String[] args) {
+    public boolean perform(@NotNull CommandSender sender, @NotNull String command, CommandInformation information, String[] args) {
         try {
             long mss = System.currentTimeMillis();
 
@@ -40,7 +41,7 @@ public class FallbackReload extends net.cybercake.cyberapi.spigot.server.command
     }
 
     @Override
-    public List<String> tab(@net.cybercake.cyberapi.dependencies.annotations.jetbrains.NotNull CommandSender sender, @net.cybercake.cyberapi.dependencies.annotations.jetbrains.NotNull String command, CommandInformation information, String[] args) {
+    public List<String> tab(@NotNull CommandSender sender, @NotNull String command, CommandInformation information, String[] args) {
         return null;
     }
 }
