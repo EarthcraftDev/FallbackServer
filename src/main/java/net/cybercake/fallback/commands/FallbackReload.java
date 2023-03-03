@@ -1,5 +1,6 @@
 package net.cybercake.fallback.commands;
 
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.cybercake.cyberapi.spigot.basic.BetterStackTraces;
 import net.cybercake.cyberapi.spigot.chat.TabCompleteType;
 import net.cybercake.cyberapi.spigot.chat.UChat;
@@ -11,15 +12,19 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class FallbackReload extends net.cybercake.cyberapi.spigot.server.commands.Command {
+public class FallbackReload extends net.cybercake.cyberapi.spigot.server.commands.SpigotCommand {
 
     public FallbackReload() {
         super(
-                newCommand("fallbackreload")
-                        .setDescription("Reloads the configuration file for the fallback server.")
-                        .setUsage("/fallbackreload")
-                        .setCommodore(true)
+                newCommand("fallbackReload")
+                        .setUsage("&6/&afallbackReload")
+                        .setDescription("Reloads the Fallback plugin's configuration.")
+                        .setPermission("fallbackserver.reload", UChat.chat("&cYou don't have permission to use this command!"))
                         .setTabCompleteType(TabCompleteType.SEARCH)
+                        .setCommodore(
+                                LiteralArgumentBuilder.literal("fallbackReload")
+                                        .build()
+                        )
         );
     }
 
@@ -30,7 +35,7 @@ public class FallbackReload extends net.cybercake.cyberapi.spigot.server.command
 
             Main.getInstance().getConfiguration().reload();
 
-            sender.sendMessage(UChat.component("&aSuccessfully &7reloaded the fallback configuration in &b" + (System.currentTimeMillis()-mss) + "&bms&7!"));
+            sender.sendMessage(UChat.component("&6Successfully reloaded the fallback configuration in &a" + (System.currentTimeMillis()-mss) + "ms&6!"));
             Main.getInstance().playSound(sender, Sound.ENTITY_PLAYER_LEVELUP, 1F, 1F);
         } catch (Exception exception) {
             sender.sendMessage(UChat.component("&cAn error occurred whilst reloading the fallback configuration! &4" + exception));

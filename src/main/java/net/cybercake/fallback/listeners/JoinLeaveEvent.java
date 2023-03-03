@@ -1,16 +1,16 @@
 package net.cybercake.fallback.listeners;
 
+import net.cybercake.cyberapi.spigot.server.listeners.SpigotListener;
 import net.cybercake.fallback.Configuration;
 import net.cybercake.fallback.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class JoinLeaveEvent implements Listener {
+public class JoinLeaveEvent implements SpigotListener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
@@ -29,7 +29,7 @@ public class JoinLeaveEvent implements Listener {
         player.setGameMode(GameMode.SPECTATOR);
         player.teleport(configuration.getSpawn());
 
-        Main.getInstance().send(player, configuration.getConnectTo());
+        Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> Main.getInstance().send(player, "$$configuration"), 1L); // run slightly delayed so we don't run into problems
     }
 
     @EventHandler
