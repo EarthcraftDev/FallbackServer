@@ -28,12 +28,19 @@ dependencies {
 }
 
 shadowJar {
+    archiveClassifier = null
+
     dependencies {
         exclude(dependency('com.mojang:brigadier'))
     }
 
     /* vvv Replace with the package of your plugin vvv */
     relocate 'me.lucko.commodore', 'net.cybercake.fallback.commodore'
+}
+
+jar {
+    enabled = false
+    dependsOn(shadowJar)
 }
 
 def targetJavaVersion = 17
