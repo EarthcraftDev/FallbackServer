@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id "com.github.johnrengelman.shadow" version "8.1.0"
+    id "com.github.johnrengelman.shadow" version "8.1.1"
 }
 
 group = 'net.cybercake.fallback'
@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'io.papermc.paper:paper-api:1.19.3-R0.1-SNAPSHOT'
+    compileOnly 'io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT'
 
     implementation 'com.github.CyberedCake.CyberAPI:spigot:108'
     implementation 'com.github.CyberedCake.CyberAPI:common:108'
