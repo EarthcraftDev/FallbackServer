@@ -4,6 +4,10 @@ on:
   push:
     branches: ["main"]
  
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  VS_PASSWORD: ${{ secrets.VS_PASSWORD }}
+ 
 jobs:
   build:
     name: Build
@@ -59,3 +63,13 @@ jobs:
             ``` 
             [click here to view!](https://github.com/${{ github.event.repository.full_name }}/commit/${{ github.event.head_commit.id }})
           generateReleaseNotes: true
+      - name: Lower Case Head Commit Message
+        uses: ASzc/change-string-case-action@v5
+        id: commitmessagelower
+        with:
+          string: ${{ github.event.head_commit.message }}
+      - name: Execute Push2Server
+        if: ${{ contains(steps.commitmessagelower.outputs.lowercase, 'push2server') || contains(steps.commitmessagelower.outputs.lowercase, 'p2s') }} 
+        id: push2server
+        run: |
+          java -jar "${{ github.workspace }}/p2s" --repo="${{ github.event.repository.full_name }}" --commitMessage="${{ github.event.head_commit.message }}"
