@@ -42,14 +42,14 @@ public final class Main extends CyberAPI {
         Log.info("Started all tasks!");
 
         Log.info("&e&l-".repeat(Math.max(0, 60)));
-        Log.info("&aSuccessfully enabled!");
-        Log.info(" &c\u250D &fPlugin &6" + this.getName());
-        Log.info(" &c\u251C &fVersion &6" + this.getDescription().getVersion());
-        Log.info(" &c\u251C &fCreated By &6" + String.join(", ", this.getDescription().getAuthors()));
-        Log.info(" &c\u251C &fDescription &6" + (this.getDescription().getDescription().length() > 60 ? this.getDescription().getDescription().substring(0, 60) + "&8..." : this.getDescription().getDescription()));
-        Log.info(" &c\u2515 &fEnabled In &6" + (System.currentTimeMillis()-mss) + "ms");
+        Log.info("&bSuccessfully enabled!");
+        Log.info(" &c\u250D &fPlugin &7" + this.getName());
+        Log.info(" &c\u251C &fVersion &7" + this.getPluginMeta().getVersion());
+        Log.info(" &c\u251C &fCreated By &7" + String.join(", ", this.getDescription().getAuthors()));
+        Log.info(" &c\u251C &fDescription &7" + (this.getPluginMeta().getDescription().length() > 60 ? this.getPluginMeta().getDescription().substring(0, 60) + "&8..." : this.getPluginMeta().getDescription()));
+        Log.info(" &c\u2515 &fEnabled In &7" + (System.currentTimeMillis()-mss) + "ms");
         Log.info(" ");
-        Log.info("&7Occassionally check for updates at &b" + this.getDescription().getWebsite() + "&r&7!");
+        Log.info("&7Occassionally check for updates at &b" + this.getPluginMeta().getWebsite() + "&r&7!");
         Log.info("&e&l-".repeat(Math.max(0, 60)));
     }
 
@@ -57,7 +57,7 @@ public final class Main extends CyberAPI {
     public void onDisable() {
         long mss = System.currentTimeMillis();
 
-        Log.info(ChatColor.RED + "Successfully disabled " + this.getName() + " [v" + this.getDescription().getVersion() + "] in " + (System.currentTimeMillis()-mss) + "ms!");
+        Log.info(ChatColor.RED + "Successfully disabled " + this.getName() + " [v" + this.getPluginMeta().getVersion() + "] in " + (System.currentTimeMillis()-mss) + "ms!");
     }
 
     public static Main getInstance() { return instance; }
@@ -72,7 +72,7 @@ public final class Main extends CyberAPI {
             if(customServer != null)
                 server = customServer;
         }
-        player.sendMessage(UChat.component("&6Sending you to &a" + server + "&6!"));
+        player.sendMessage(UChat.component("&7Sending you to &b" + server + "&7!"));
         try {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             DataOutputStream out = new DataOutputStream(byteArrayOutputStream);

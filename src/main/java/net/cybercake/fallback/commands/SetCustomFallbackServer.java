@@ -23,7 +23,7 @@ public class SetCustomFallbackServer extends SpigotCommand {
         super(
                 newCommand("setCustomFallbackServer")
                         .setDescription("Set's the server for yourself or everyone on the server.")
-                        .setUsage("&6/&esetcustomfallbackserver <myself|all|player> <server...>")
+                        .setUsage("&7/&esetcustomfallbackserver <myself|all|player> <server...>")
                         .setPermission("fallbackserver.setcustom", UChat.chat("&cYou don't have permission to use this command!"))
                         .setTabCompleteType(TabCompleteType.SEARCH)
                         .setCommodore(
@@ -62,12 +62,12 @@ public class SetCustomFallbackServer extends SpigotCommand {
             switch(args[0]) {
                 case "myself", "all" -> {
                     Main.getInstance().getConfiguration().setServer((args[0].equalsIgnoreCase("myself") ? sender.getName() : "all"), args[1]);
-                    sender.sendMessage(UChat.component("&6You set &a" + (args[0].equalsIgnoreCase("myself") ? "your&6" : "everyone&6's") + " &6fallback server to &b" + args[1] + "&6!"));
+                    sender.sendMessage(UChat.component("&7You set &b" + (args[0].equalsIgnoreCase("myself") ? "your&7" : "everyone&7's") + " &7fallback server to &b" + args[1] + "&7!"));
                     Main.getInstance().playSound(sender, Sound.ENTITY_PLAYER_LEVELUP, 1F, 2F);
                 }
                 default -> {
                     Main.getInstance().getConfiguration().setServer(args[0], args[1]);
-                    sender.sendMessage(UChat.component("&6You set &a" + args[0]+ "&6's fallback server to &b" + args[1] + "&6!"));
+                    sender.sendMessage(UChat.component("&7You set &b" + args[0]+ "&7's fallback server to &b" + args[1] + "&7!"));
                     Main.getInstance().playSound(sender, Sound.ENTITY_PLAYER_LEVELUP, 1F, 2F);
                 }
             }
