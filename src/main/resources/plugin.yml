@@ -1,5 +1,5 @@
 name: FallbackServer
-version: '1.3'
+version: 'v1.0.0 (fork of v1.3)'
 main: net.cybercake.fallback.Main
 api-version: 1.19
 prefix: FallbackServer

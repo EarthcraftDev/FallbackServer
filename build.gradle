@@ -23,17 +23,25 @@ repositories {
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT'
 
-    implementation 'com.github.CyberedCake.CyberAPI:spigot:107'
+    implementation 'com.github.CyberedCake.CyberAPI:spigot:108'
+    implementation 'com.github.CyberedCake.CyberAPI:common:108'
     implementation 'me.lucko:commodore:2.2'
 }
 
 shadowJar {
+    archiveClassifier = null
+
     dependencies {
         exclude(dependency('com.mojang:brigadier'))
     }
 
     /* vvv Replace with the package of your plugin vvv */
     relocate 'me.lucko.commodore', 'net.cybercake.fallback.commodore'
+}
+
+jar {
+    enabled = false
+    dependsOn(shadowJar)
 }
 
 def targetJavaVersion = 17

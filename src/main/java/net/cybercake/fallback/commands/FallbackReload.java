@@ -17,7 +17,7 @@ public class FallbackReload extends net.cybercake.cyberapi.spigot.server.command
     public FallbackReload() {
         super(
                 newCommand("fallbackReload")
-                        .setUsage("&6/&afallbackReload")
+                        .setUsage("&7/&bfallbackReload")
                         .setDescription("Reloads the Fallback plugin's configuration.")
                         .setPermission("fallbackserver.reload", UChat.chat("&cYou don't have permission to use this command!"))
                         .setTabCompleteType(TabCompleteType.SEARCH)
@@ -35,7 +35,7 @@ public class FallbackReload extends net.cybercake.cyberapi.spigot.server.command
 
             Main.getInstance().getConfiguration().reload();
 
-            sender.sendMessage(UChat.component("&6Successfully reloaded the fallback configuration in &a" + (System.currentTimeMillis()-mss) + "ms&6!"));
+            sender.sendMessage(UChat.component("&7Successfully reloaded the fallback configuration in &b" + (System.currentTimeMillis()-mss) + "ms&7!"));
             Main.getInstance().playSound(sender, Sound.ENTITY_PLAYER_LEVELUP, 1F, 1F);
         } catch (Exception exception) {
             sender.sendMessage(UChat.component("&cAn error occurred whilst reloading the fallback configuration! &4" + exception));
